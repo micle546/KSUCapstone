@@ -1,0 +1,89 @@
+name: Autodeploy to Digital Ocean
+
+on:
+  push:
+    branches: ['dev']
+
+  workflow_dispatch:
+
+env:
+  HOST: 67.205.155.213
+  USER: root
+  SSH_OPTIONS: -i ~/.ssh/id_digital_ocean_rsa -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no
+  RUNX: ssh -i ~/.ssh/id_digital_ocean_rsa -o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@67.205.155.213
+
+jobs:
+  example_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.ID_DIGITAL_OCEAN_RSA }}
+          name: id_digital_ocean_rsa
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: dev
+
+      - name: Say Hello
+        run: |
+          echo Hello!
+
+      - name: Look Around
+        run: |
+          echo '$pwd'
+          pwd
+          echo '$ ls -la'
+          ls -la
+
+      - name: Look Around On The Server
+        run: |
+          # set up utilities
+          export TARGET=$USER@$HOST
+          export RUN="ssh $SSH_OPTIONS $TARGET"
+          export COPY="scp $SSH_OPTIONS"
+          $RUNX ls -la
+
+#      - name: Stop Server
+#        run: |
+#          # set up utilities
+#          export TARGET=$USER@$HOST
+#          export RUN="ssh $SSH_OPTIONS $TARGET"
+#          export COPY="scp $SSH_OPTIONS"
+#          $RUNX
+
+#      - name: Transfer files
+#        run: |
+#          # set up utilities
+#          export TARGET=$USER@$HOST
+#          export RUN="ssh $SSH_OPTIONS $TARGET"
+#          export COPY="scp $SSH_OPTIONS"
+
+#          echo "---"
+#          $RUNX ls -la
+#          echo "---"
+#          $COPY -r techsupport $USER@$HOST:.
+#          $COPY requirements.txt $USER@$HOST:.
+#          $COPY runserver.py $USER@$HOST:.
+#          echo "---"
+#          $RUNX ls -la
+#          echo "---"
+
+#      - name: Start Server
+#        run: |
+#          # set up utilities
+#          export TARGET=$USER@$HOST
+#          export RUN="ssh $SSH_OPTIONS $TARGET"
+#          export COPY="scp $SSH_OPTIONS"
+#          $RUNX chmod +x runserver.py
+#          $RUNX pip install -r requirements.txt 
+
+
+
+      - name: Say Goodbye
+        run:    |
+          echo Goodbye!            
