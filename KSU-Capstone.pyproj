@@ -28,9 +28,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="gunicorn_config.py" />
     <Compile Include="runserver.py" />
     <Compile Include="KSU_Capstone\__init__.py" />
     <Compile Include="KSU_Capstone\views.py" />
+    <Compile Include="wsgi.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="KSU_Capstone\" />
@@ -72,8 +74,8 @@
   <ItemGroup>
     <Interpreter Include="env\">
       <Id>env</Id>
-      <Version>3.7</Version>
-      <Description>env (Python 3.7 (64-bit))</Description>
+      <Version>3.10</Version>
+      <Description>env (Python 3.10 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

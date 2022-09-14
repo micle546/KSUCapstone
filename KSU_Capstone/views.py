@@ -4,7 +4,7 @@ Routes and views for the flask application.
 
 from datetime import datetime
 from flask import render_template
-from KSU_Capstone import app
+from . import app
 
 @app.route('/')
 @app.route('/home')
