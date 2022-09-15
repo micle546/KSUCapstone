@@ -1,6 +1,7 @@
 # KSUCapstone
-Kent State Capstone Repo
 
+Kent State Capstone Repo
+https://dev.kentcapstone.ai-home.co/
 # Setting up Visual Studio
 - Open Visual Studio
 - Select clone a repo
