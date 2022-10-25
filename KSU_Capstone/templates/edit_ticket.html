@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div></div>
+
+<script type="text/javascript">
+    status = {{ ticket.ticket_status | tojson }};
+    setStatus('ticket_status', status);
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-lg">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="btn" href="{{url_for('get_tickets')}}">Cancel</a>
+                    </div>
+                </div>
+
+
+                <h1 class="center">Update Ticket</h1>
+
+                <form name="edit_ticket">
+
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="id">ID</label>
+                            <input type="text" name="id" class="field" value="{{ticket['_id']}}" readonly />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="assigned_to">Assigned To</label>
+                            <input type="text" name="assigned_to" value="{{ticket['assigned_to']}}" class="field" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="ticket_status">Status</label>
+                            <select id="ticket_status" name="ticket_status" class="field">
+                                <option value="Open">Open</option>
+                                <option value="Closed">Closed</option>
+                                <option value="On-hold">On-hold</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Waiting on Client">Waiting on Client</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" value="{{ticket['email']}}" class="field" readonly required />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="name">Created by</label>
+                            <input type="text" name="name" class="field" value="{{ticket['name']}}" readonly required />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="modified_user">Last Modified by</label>
+                            <input type="text" name="modified_user" value="{{ticket['modified_user']}}" class="field" readonly required />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="create_time">Created Time</label>
+                            <input type="datetime" name="create_time" value="{{ticket['create_time']}}" class="field" readonly required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modified_time">Last Modified</label>
+                            <input type="datetime" name="modified_time" class="field" value="{{ticket['modified_time']}}" readonly required />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" value="{{ticket['title']}}" class="field" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="desc">Description</label>
+                        <textarea name="desc" class="form-control" rows="5" required>{{ticket['desc']}}</textarea>
+                    </div>
+                    <!--<label for="password">Password</label>
+    <input type="password" name="password" class="field" required />-->
+
+                    <p class="error error--hidden">test</p>
+
+                    <input type="submit" value="Update Ticket" class="btn" />
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

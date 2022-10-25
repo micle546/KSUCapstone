@@ -29,21 +29,43 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="gunicorn_config.py" />
-    <Compile Include="runserver.py" />
+    <Compile Include="KSU_Capstone\tickets\models.py" />
+    <Compile Include="KSU_Capstone\tickets\ticket_views.py" />
+    <Compile Include="KSU_Capstone\tickets\__init__.py" />
+    <Compile Include="KSU_Capstone\views.py" />
     <Compile Include="KSU_Capstone\__init__.py" />
+    <Compile Include="runserver.py" />
+    <Compile Include="KSU_Capstone\user\models.py" />
+    <Compile Include="KSU_Capstone\user\user_views.py" />
+    <Compile Include="KSU_Capstone\user\__init__.py" />
     <Compile Include="KSU_Capstone\views.py" />
     <Compile Include="wsgi.py" />
+    <Compile Include="KSU_Capstone\__init__.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="KSU_Capstone\" />
+    <Folder Include="KSU_Capstone\templates\" />
+    <Folder Include="KSU_Capstone\tickets\" />
+    <Folder Include="KSU_Capstone\tickets\__pycache__\" />
     <Folder Include="KSU_Capstone\static\" />
     <Folder Include="KSU_Capstone\static\content\" />
     <Folder Include="KSU_Capstone\static\fonts\" />
     <Folder Include="KSU_Capstone\static\scripts\" />
-    <Folder Include="KSU_Capstone\templates\" />
+    <Folder Include="KSU_Capstone\user\" />
+    <Folder Include="KSU_Capstone\user\__pycache__\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="KSU_Capstone\templates\create_ticket.html" />
+    <Content Include="KSU_Capstone\templates\edit_ticket.html" />
+    <Content Include="KSU_Capstone\templates\tickets.html" />
+    <Content Include="KSU_Capstone\tickets\__pycache__\models.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\tickets\__pycache__\ticket_views.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\tickets\__pycache__\__init__.cpython-310.pyc" />
     <Content Include="requirements.txt" />
+    <Content Include="KSU_Capstone\templates\about.html" />
+    <Content Include="KSU_Capstone\templates\contact.html" />
+    <Content Include="KSU_Capstone\templates\index.html" />
+    <Content Include="KSU_Capstone\templates\layout.html" />
     <Content Include="KSU_Capstone\static\content\bootstrap.css" />
     <Content Include="KSU_Capstone\static\content\bootstrap.min.css" />
     <Content Include="KSU_Capstone\static\content\site.css" />
@@ -53,11 +75,15 @@
     <Content Include="KSU_Capstone\static\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="KSU_Capstone\static\scripts\bootstrap.js" />
     <Content Include="KSU_Capstone\static\scripts\bootstrap.min.js" />
-    <Content Include="KSU_Capstone\static\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="KSU_Capstone\user\__pycache__\models.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\user\__pycache__\user_views.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\user\__pycache__\views.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\user\__pycache__\__init__.cpython-310.pyc" />
+    <None Include="KSU_Capstone\static\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="KSU_Capstone\static\scripts\jquery-1.10.2.js" />
     <Content Include="KSU_Capstone\static\scripts\jquery-1.10.2.min.js" />
     <Content Include="KSU_Capstone\static\scripts\jquery-1.10.2.min.map" />
-    <Content Include="KSU_Capstone\static\scripts\jquery.validate-vsdoc.js" />
+    <None Include="KSU_Capstone\static\scripts\jquery.validate-vsdoc.js" />
     <Content Include="KSU_Capstone\static\scripts\jquery.validate.js" />
     <Content Include="KSU_Capstone\static\scripts\jquery.validate.min.js" />
     <Content Include="KSU_Capstone\static\scripts\jquery.validate.unobtrusive.js" />
@@ -65,11 +91,7 @@
     <Content Include="KSU_Capstone\static\scripts\modernizr-2.6.2.js" />
     <Content Include="KSU_Capstone\static\scripts\respond.js" />
     <Content Include="KSU_Capstone\static\scripts\respond.min.js" />
-    <Content Include="KSU_Capstone\static\scripts\_references.js" />
-    <Content Include="KSU_Capstone\templates\about.html" />
-    <Content Include="KSU_Capstone\templates\contact.html" />
-    <Content Include="KSU_Capstone\templates\index.html" />
-    <Content Include="KSU_Capstone\templates\layout.html" />
+    <None Include="KSU_Capstone\static\scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

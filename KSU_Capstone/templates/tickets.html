@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+        <a class="btn" href="{{url_for('get_create')}}">New Ticket</a>
+    </div>
+
+</div>
+<div class="table-responsive">
+    <table class="table table-striped table-bordered">
+        <thead class="">
+            <tr style="">
+                <th class="align-middle" style="text-align:center">ID</th>
+                <th class="align-middle" style="text-align:center">Status</th>
+                <th class="align-middle" style="text-align:center">Assigned to</th>
+                <th class="align-middle" style="text-align:center">Created</th>
+                <th class="align-middle" style="text-align:center">Last Modified</th>
+                <th class="align-middle" style="text-align:center">Created by</th>
+                <th class="align-middle" style="text-align:center">Title</th>
+                <!--<th>Description</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in ticket_list %}
+            <tr>
+                <td> <a href="{{url_for('get_ticket_by_id', id=ticket['_id'])}}">{{ticket['_id']}}</a></td>
+                <td>{{ticket['ticket_status']}}</td>
+                <td>{{ticket['assigned_to']}}</td>
+                <td>{{ticket['create_time']}}</td>
+                <td>{{ticket['modified_time']}}</td>
+                <td>{{ticket['name']}}</td>
+                <td>{{ticket['title']}}</td>
+                <!--<td style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{ticket['desc']}}</td>-->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
