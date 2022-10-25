@@ -57,6 +57,7 @@
   <ItemGroup>
     <Content Include="KSU_Capstone\templates\create_ticket.html" />
     <Content Include="KSU_Capstone\templates\edit_ticket.html" />
+    <Content Include="KSU_Capstone\templates\login.html" />
     <Content Include="KSU_Capstone\templates\tickets.html" />
     <Content Include="KSU_Capstone\tickets\__pycache__\models.cpython-310.pyc" />
     <Content Include="KSU_Capstone\tickets\__pycache__\ticket_views.cpython-310.pyc" />

@@ -26,12 +26,6 @@ def home():
 @app.route('/tickets/')
 def tickets():
     return redirect('/tickets')
-    """Renders the home page."""
-    return render_template(
-        'index.html',
-        title='Home Page',
-        year=datetime.now().year,
-    )
 
 @app.route('/contact/')
 def contact():

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+
+                <h1 class="center">Create an Account</h1>
+
+                <form name="signup_form">
+
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="field" required />
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="field" required />
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="field" required />
+
+                    <p class="error error--hidden">test</p>
+
+                    <input type="submit" value="Sign Up" class="btn"/>
+
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+
+                <h1 class="center">Login</h1>
+
+                <form name="login_form">
+
+
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="field" required />
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="field" required />
+
+                    <p class="error error--hidden">test</p>
+
+                    <input type="submit" value="Login" class="btn" />
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
