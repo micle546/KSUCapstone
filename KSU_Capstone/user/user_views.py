@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, jsonify
 from functools import wraps
 from .. import app
 from .models import User
@@ -15,6 +15,24 @@ def login_required(f):
             return redirect('/user/login')
     return wrap
 
+def elevateduser_required(f): #
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'user_type' in session == 1:
+            return f(*args, **kwargs)
+        else:
+            return jsonify({ "error": "Invalid User Type" }), 401
+    return wrap
+
+
+def admin_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'user_type' in session == 2:
+            return f(*args, **kwargs)
+        else:
+            return jsonify({ "error": "Invalid User Type" }), 401
+    return wrap
 
 #routes
 @app.route('/user/login/', methods=['GET'])
@@ -39,5 +57,7 @@ def signout():
 
 @app.route('/users/', methods=['GET'])
 @login_required
+#@admin_required
 def get_users():
-    return User().get_users()
+    return render_template('users.html', title='View Users', user_list=User().get_users(), year=datetime.now().year)
+    #return User().get_users()

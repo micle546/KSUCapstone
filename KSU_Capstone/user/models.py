@@ -57,5 +57,11 @@ class User:
             return jsonify({"error": "Invaild login credentials"}), 401
 
     def get_users(self):
-        if (session['user']['user_type'] != 2):
+        #return jsonify({'User': session['user']['user_type']}), 200
+        if (session['user']['user_type'] != 0):
             return jsonify({ "error": "Invalid User Type" }), 401
+
+        for x in db.users.find():
+            #print(x)
+            x['_id'] = str(x['_id'])
+        return db.users.find()
