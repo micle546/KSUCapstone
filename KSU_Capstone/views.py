@@ -22,12 +22,6 @@ def home():
         year=datetime.now().year,
     )
 
-
-
-@app.route('/tickets/')
-def tickets():
-    return redirect('/tickets')
-
 @app.route('/contact/')
 def contact():
     """Renders the contact page."""
