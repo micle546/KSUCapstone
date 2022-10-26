@@ -12,7 +12,7 @@ def login_required(f):
         if 'logged_in' in session:
             return f(*args, **kwargs)
         else:
-            return redirect('/')
+            return redirect('/user/login')
     return wrap
 
 
@@ -36,3 +36,8 @@ def page():
 @app.route('/user/signout')
 def signout():
     return User().signout()
+
+@app.route('/users/', methods=['GET'])
+@login_required
+def get_users():
+    return User().get_users()

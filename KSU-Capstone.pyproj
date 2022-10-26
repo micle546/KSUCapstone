@@ -52,8 +52,11 @@
     <Compile Include="KSU_Capstone\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".github\" />
+    <Folder Include=".github\workflows\" />
     <Folder Include="KSU_Capstone\" />
     <Folder Include="KSU_Capstone\catalog\" />
+    <Folder Include="KSU_Capstone\catalog\__pycache__\" />
     <Folder Include="KSU_Capstone\templates\" />
     <Folder Include="KSU_Capstone\tickets\" />
     <Folder Include="KSU_Capstone\tickets\__pycache__\" />
@@ -63,8 +66,14 @@
     <Folder Include="KSU_Capstone\static\scripts\" />
     <Folder Include="KSU_Capstone\user\" />
     <Folder Include="KSU_Capstone\user\__pycache__\" />
+    <Folder Include="KSU_Capstone\__pycache__\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".github\workflows\autodeploy.yml" />
+    <Content Include=".gitignore" />
+    <Content Include="KSU_Capstone\catalog\__pycache__\catalog_views.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\catalog\__pycache__\models.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\catalog\__pycache__\__init__.cpython-310.pyc" />
     <Content Include="KSU_Capstone\templates\create_ticket.html" />
     <Content Include="KSU_Capstone\templates\edit_ticket.html" />
     <Content Include="KSU_Capstone\templates\login.html" />
@@ -73,6 +82,9 @@
     <Content Include="KSU_Capstone\tickets\__pycache__\models.cpython-310.pyc" />
     <Content Include="KSU_Capstone\tickets\__pycache__\ticket_views.cpython-310.pyc" />
     <Content Include="KSU_Capstone\tickets\__pycache__\__init__.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\__pycache__\views.cpython-310.pyc" />
+    <Content Include="KSU_Capstone\__pycache__\__init__.cpython-310.pyc" />
+    <Content Include="README.md" />
     <Content Include="requirements.txt" />
     <Content Include="KSU_Capstone\templates\about.html" />
     <Content Include="KSU_Capstone\templates\contact.html" />

@@ -23,6 +23,7 @@ class User:
             "_id": uuid.uuid4().hex,
             "name": request.form.get('name'),
             "email": request.form.get('email'),
+            "user_type": 0,
             "password": request.form.get('password'),
             }
 
@@ -54,3 +55,7 @@ class User:
             return self.start_session(user)
         else:
             return jsonify({"error": "Invaild login credentials"}), 401
+
+    def get_users(self):
+        if (session['user']['user_type'] != 2):
+            return jsonify({ "error": "Invalid User Type" }), 401
