@@ -15,6 +15,7 @@ client = MongitaClientDisk(host="./.mongita")
 db = client.db
 user_db = db.users
 ticket_db = db.tickets
-#counter_db = db.counters
+catalog_db = db.catalog
+
 
 from . import views

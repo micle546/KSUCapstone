@@ -9,6 +9,7 @@ from . import app
 
 from .user import user_views
 from .tickets import ticket_views
+from .catalog import catalog_views
 
 
 @app.route('/')

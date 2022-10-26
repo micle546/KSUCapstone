@@ -24,12 +24,12 @@ def get_tickets():
 
 @app.route('/tickets/create/', methods=['GET'])
 @login_required
-def get_create():
+def get_ticket_create():
     return render_template('create_ticket.html', title='Create Ticket', year=datetime.now().year, time_now=datetime.now().strftime('%x %X'))
 
 @app.route('/tickets/create/', methods=['POST'])
 @login_required
-def post_create():
+def post_ticket_create():
     return Ticket().create_ticket()
 
 @app.route('/tickets/view/', methods=['GET'])
@@ -44,5 +44,5 @@ def get_ticket_by_id(id):
 
 @app.route('/tickets/edit/', methods=['POST'])
 @login_required
-def post_edit():
+def post_ticket_edit():
     return Ticket().edit_ticket()

@@ -29,6 +29,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="gunicorn_config.py" />
+    <Compile Include="KSU_Capstone\catalog\catalog_views.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="KSU_Capstone\catalog\models.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="KSU_Capstone\catalog\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="KSU_Capstone\tickets\models.py" />
     <Compile Include="KSU_Capstone\tickets\ticket_views.py" />
     <Compile Include="KSU_Capstone\tickets\__init__.py" />
@@ -44,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="KSU_Capstone\" />
+    <Folder Include="KSU_Capstone\catalog\" />
     <Folder Include="KSU_Capstone\templates\" />
     <Folder Include="KSU_Capstone\tickets\" />
     <Folder Include="KSU_Capstone\tickets\__pycache__\" />
@@ -58,6 +68,7 @@
     <Content Include="KSU_Capstone\templates\create_ticket.html" />
     <Content Include="KSU_Capstone\templates\edit_ticket.html" />
     <Content Include="KSU_Capstone\templates\login.html" />
+    <Content Include="KSU_Capstone\templates\catalog.html" />
     <Content Include="KSU_Capstone\templates\tickets.html" />
     <Content Include="KSU_Capstone\tickets\__pycache__\models.cpython-310.pyc" />
     <Content Include="KSU_Capstone\tickets\__pycache__\ticket_views.cpython-310.pyc" />
