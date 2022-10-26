@@ -39,5 +39,5 @@ def about():
         'about.html',
         title='About',
         year=datetime.now().year,
-        message='Kent State University at Stark Kelpdesk System'
+        message='Kent State University Archeology Library System'
     )
