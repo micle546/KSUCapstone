@@ -9,7 +9,6 @@
 
 import requests
 import json
-import sys
 
 ###############################################################################################################
     # ADD THE LINE BELOW TO THE TOP OF YOUR FILE TO USE THE 'get_book_data()' FUNCTION # 
