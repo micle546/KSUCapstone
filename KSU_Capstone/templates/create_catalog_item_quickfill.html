@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-lg">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <a class="btn" href="{{url_for('get_catalog')}}">Cancel</a>
+                    </div>
+                </div>
+
+                <h1 class="center">Create a Catalog Item</h1>
+
+                <form name="isbn_autofill">
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="isbn">ISBN</label>
+                            <input type="text" name="isbn-auto" value="{{catalog_item['isbn']}}" class="field" required />
+                        </div>
+                        <input type="submit" id="isbn_autofill_btn" name="action" value="ISBN Easy Fill" class="btn" />
+                        <hr />
+                        <h2>TEST</h2> 
+                        <hr />
+
+                        <!--<div class="col-md-4">
+        <label for="status">Status</label>
+        <select id="status" class="field" disabled readonly>
+            <option>Open</option>
+            <option>Closed</option>
+            <option>On-hold</option>
+            <option>Waiting on Client</option>
+        </select>
+    </div>-->
+                    </div>
+
+                </form>
+
+                <form name="create_catalog_item">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="item_type">Item Type</label>
+                            <select id="item_type" name="item_type" value="{{catalog_item['item_type']}}" class="field">
+                                <option value="1">Book</option>
+                                <option value="2">?</option>
+                                <option value="3">??</option>
+                                <option value="4">???</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="title">Title</label>
+                            <input type="text" name="title" value="{{catalog_item['title']}}" class="field" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="author">Author</label>
+                            <input type="text" name="author" value="{{catalog_item['author']}}" class="field" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="desc">Description</label>
+                        <textarea name="desc" class="form-control" value="{{catalog_item['desc']}}" rows="5"></textarea>
+                    </div>
+                    <br />
+                    
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label for="item_status">item_status</label>
+                            <select id="item_status" name="item_status" class="field">
+                                <option value="1">On Shelf</option>
+                                <option value="2">Checked-Out</option>
+                                <option value="3">??</option>
+                                <option value="4">???</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="checkedout_to">checkedout_to</label>
+                            <input type="text" name="checkedout_to" class="field" value="" readonly required />
+                        </div>
+                        <div class="col-md-4">
+                            <label for="modified_time">Last Modified</label>
+                            <input type="datetime" name="modified_time" class="field" value="" readonly required />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="create_time">Created Time</label>
+                            <input type="datetime" name="create_time" value="{{time_now}}" class="field" readonly required />
+                        </div>
+                        <div class="col-md-6">
+                            <label for="modified_time">{Reserved}</label>
+                            <input type="datetime" name="modified_time" class="field" value="" readonly required />
+                        </div>
+                    </div>
+
+                    <!--<div>
+        <label for="title">Title</label>
+        <input type="text" name="title" class="field" required />
+    </div>-->
+                    <!--<label for="password">Password</label>
+    <input type="password" name="password" class="field" required />-->
+
+                    <p class="error error--hidden">test</p>
+
+                    <input type="submit" id="submit" name="action" value="Create Catalog Item" class="btn" />
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

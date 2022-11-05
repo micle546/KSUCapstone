@@ -1,8 +1,10 @@
 from datetime import datetime
-from flask import Flask, render_template, session, redirect
+from gettext import Catalog
+from flask import Flask, render_template, session, redirect, request, jsonify, url_for
 from functools import wraps
 from .. import app
 from .models import Catalog_Item
+from .book_data import get_book_data
 
 #decorators
 
@@ -26,10 +28,31 @@ def get_catalog():
 def get_catalog_create():
     return render_template('create_catalog_item.html', title='Create Catalog Item', year=datetime.now().year, time_now=datetime.now().strftime('%x %X'))
 
+@app.route('/catalog/create/<isbn>', methods=['GET'])
+@login_required
+def get_catalog_create_isbn(isbn):
+    #catalog_item = get_book_data(isbn)
+    #print(catalog_item)
+    print('test_hit')
+    return render_template('create_catalog_item_quickfill.html', catalog_item=get_book_data(isbn), title='Create Catalog Item', year=datetime.now().year, time_now=datetime.now().strftime('%x %X'))
+
+
 @app.route('/catalog/create/', methods=['POST'])
 @login_required
 def post_catalog_create():
-    return Catalog_Item.create_catalog_item()
+    if 'isbn-auto' in request.form:
+        print('easyfill')
+        print(request.form.get('isbn-auto'))
+
+        return jsonify({"redirect": "/catalog/create/"+request.form.get('isbn-auto')})
+    
+        return redirect('/catalog/create/'+request.form.get('isbn-auto'),303)
+        return redirect(url_for('get_catalog_create_isbn',isbn=request.form.get('isbn-auto')))
+        #return get_catalog_create_isbn(isbn=request.form['isbn-auto'])
+    elif 'Create Catalog Item' in request.form:
+        print('other')
+        return Catalog_Item.create_catalog_item()
+    else: print(request.form)
 
 @app.route('/catalog/view/', methods=['GET'])
 def get_catalog_list():

@@ -89,3 +89,53 @@ $("form[name=edit_ticket]").submit(function (e) {
 
     e.preventDefault();
 });
+
+$("form[name=create_catalog_item]").submit(function (e) {
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "/catalog/create",
+        type: "POST",
+        data: data,
+        dataType: "json",
+
+        success: function (resp) {
+            //console.log(resp);
+            window.location.href = "/catalog/";
+        },
+        error: function (resp) {
+            $error.text(resp.responseJSON.error).removeClass("error--hidden");
+        }
+    })
+
+    e.preventDefault();
+});
+
+$("form[name=isbn_autofill]").submit(function (e) {
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "/catalog/create",
+        type: "POST",
+        data: data,
+        dataType: "json",
+
+        success: function (resp) {
+
+            console.log(resp);
+
+            if (resp.redirect) {
+                window.location.href = resp.redirect;
+            }
+        },
+        error: function (resp) {
+            $error.text(resp.responseJSON.error).removeClass("error--hidden");
+        }
+    })
+
+    e.preventDefault();
+});

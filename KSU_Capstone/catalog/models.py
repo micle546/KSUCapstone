@@ -18,12 +18,13 @@ class Catalog_Item():
 
         catalog_item = {
         "_id": str(result['_id']),
-        "item_status": result['item_status'],
-        "checkedout_to": result['checkedout_to'],
-        "title": result['title'],
-        "desc": result['desc'],
         "isbn": result['isbn'],
         "item_type": result['item_type'],
+        "title": result['title'],
+        "author": result['author'],
+        "desc": result['desc'],
+        "item_status": result['item_status'],
+        "checkedout_to": result['checkedout_to'],
         "modified_user": result['modified_user'],
         "create_time": result['create_time'],
         "modified_time": result['modified_time']
