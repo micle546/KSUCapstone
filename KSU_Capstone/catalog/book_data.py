@@ -81,4 +81,4 @@ def get_book_data(isbn):
     ##############################################
 
     # Returning dictionary that contains all useful book data
-    return {"title":title, "cover":cover, "isbn":isbn, "author":author_name, "language":language, "publish_date":publish_date}
+    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "author":author_name, "language":language, "publish_date":publish_date}
