@@ -95,5 +95,35 @@ def get_book_data(isbn):
         authors = [{"key": 'no author available'}]
     ##############################################
 
+    ############## get description ###############
+    try:
+        try:
+            descriptions = [{"key": data["description"]["value"]}]
+        except:
+            descriptions = []
+            if len(data["works"]) > 1:
+                for i in range (0, len(data["works"])):
+                    work = data["works"][i]["key"]
+                    work_url = f"https://openlibrary.org{work}.json"
+                    work_data = requests.get(work_url)
+                    work_data = work_data.json()
+                    try:
+                        descriptions.append([{"key": work_data["description"]["value"]}])
+                    except:
+                        descriptions.append([{"key": work_data["description"]}])
+                    
+            else:
+                work = data["works"][0]["key"]
+                work_url = f"https://openlibrary.org{work}.json"
+                work_data = requests.get(work_url)
+                work_data = work_data.json()
+                try:
+                    descriptions = [{"key": work_data["description"]["value"]}]
+                except:
+                    descriptions = [{"key": work_data["description"]}]        
+    except:
+        descriptions = [{"key": 'no description available'}]
+    ##############################################
+
     # Returning dictionary that contains all useful book data
-    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "authors":authors, "language":language, "publish_date":publish_date}
+    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "authors":authors, "language":language, "publish_date":publish_date, "description":descriptions}
