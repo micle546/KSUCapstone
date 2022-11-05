@@ -71,14 +71,29 @@ def get_book_data(isbn):
 
     ############### get author name ##############
     try:
-        author = data["authors"][0]["key"]
-        author_url = f"https://openlibrary.org{author}.json"
-        author_data = requests.get(author_url)
-        author_data = author_data.json()
-        author_name = author_data["personal_name"]
+        authors = []
+        if len(data["authors"]) > 1:
+            for i in range (0, len(data["authors"])):
+                author = data["authors"][i]["key"]
+                author_url = f"https://openlibrary.org{author}.json"
+                author_data = requests.get(author_url)
+                author_data = author_data.json()
+                try:
+                    authors.append({"key": author_data["name"]})
+                except:
+                    authors.append({"key": author_data["personal_name"]})
+        else:
+            author = data["authors"][0]["key"]
+            author_url = f"https://openlibrary.org{author}.json"
+            author_data = requests.get(author_url)
+            author_data = author_data.json()
+            try:
+                authors = [{"key": author_data["personal_name"]}]
+            except:
+                authors = [{"key": author_data["name"]}]
     except:
-        author_name = 'no author available'
+        authors = [{"key": 'no author available'}]
     ##############################################
 
     # Returning dictionary that contains all useful book data
-    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "author":author_name, "language":language, "publish_date":publish_date}
+    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "authors":authors, "language":language, "publish_date":publish_date}
