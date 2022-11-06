@@ -29,6 +29,14 @@
                     <li><a href="{{ url_for('about') }}">About</a></li>
                     <li><a href="{{ url_for('contact') }}">Contact</a></li>
                 </ul>
+
+                <div class="searchBar">
+                    <form action=" /action_page.php">
+                        <!--here you connect the data to search-->
+                        <input type="text" placeholder="Search.." name="Search">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
                 {% if session['logged_in'] %}
                 <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{ session['user']['email'] }}</a> / <a href={{ url_for('signout') }} class="navbar-link color-blue">Sign Out</a></p>
                 {% else %}
