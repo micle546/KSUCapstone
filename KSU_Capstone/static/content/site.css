@@ -89,10 +89,7 @@ h1 {
     margin: 0.5em 0 1em;
     font-size: 26px;
     line-height: 1.2;
-    color: white;
-    text-align: center;
-    font-style: bold;
-    font-family: Cambria;
+    color: var(--almost-black);
 }
 
 h2 {
@@ -104,7 +101,6 @@ h2 {
 
 p {
     margin: 24px 0;
-    font-family: Cambria;
 }
 
 /* Cards */
@@ -261,18 +257,6 @@ input[type=submit] {
     margin: 34px auto 24px;
     display: block;
 }
-
-.button {
-    background-color: lightskyblue;
-    border: none;
-    color: white;
-    padding: 10px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
 
 .form-control[disabled],
 .form-control[readonly],

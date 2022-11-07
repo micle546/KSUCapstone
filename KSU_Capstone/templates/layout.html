@@ -10,27 +10,16 @@
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" style="border-bottom: 5px solid gold;">
-        <block>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img style="width:200px;height:80px" src= "https://flashweb.kent.edu/images/Kent-State-Logo-White.svg" href="/" class="navbar-brand"></img>
+                <a href="/" class="navbar-brand">KSU ARCHLIB</a>
             </div>
-        {% if session['logged_in'] %}
-                <p style="text-align:right; font-family:Cambria; color:white; padding-right: 15px">Signed in as <a href="#" class="navbar-link" style="color:white">{{ session['user']['email'] }}</a> | <a href={{ url_for('signout') }} class="button">Sign Out </a></p>
-                {% else %}
-                <p style="text-align:right; font-family:Cambria; color:white; padding-right: 15px"><a href="{{ url_for('get_login') }}" class="button"> Log In | Sign up </a></p>
-                {% endif %}        
-        </block>
-        <block>
-            <h1> Archeology Library </h1> 
-        </block>
-        <div class="container">
-            
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -48,6 +37,11 @@
                         <button type="submit">Submit</button>
                     </form>
                 </div>
+                {% if session['logged_in'] %}
+                <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{ session['user']['email'] }}</a> / <a href={{ url_for('signout') }} class="navbar-link color-blue">Sign Out</a></p>
+                {% else %}
+                <p class="navbar-text navbar-right"><a href="{{ url_for('get_login') }}" class="navbar-link">Log In / Sign up</a></p>
+                {% endif %}
             </div>
         </div>
     </div>
