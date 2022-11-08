@@ -5,6 +5,7 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    padding-top:15px;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -263,4 +264,13 @@ input[type=submit] {
 field[disabled] .field {
     background: var(--grey) !important;
     opacity: 1 !important;
+}
+
+/*
+Custom CSS
+*/
+
+.a {
+    font-size: 12px;
+    color: white;
 }
