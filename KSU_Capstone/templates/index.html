@@ -1,33 +1,79 @@
+<!-- -- > 
+###################################
+###################################
+# Description of File: Home Page for ARCHLIB
+# Author: Mike Eubank, Christabel Akhigbe
+# Updated On: 11/07/2022
+# Capstone Group Members: Abdullah Almultaq, Antonio S-M, Mitchell Stemm, Christabel Akhigbe, Mike Eubank
+
+###################################
+###################################
+<! -- -->
+
 {% extends "layout.html" %}
 
 {% block content %}
 
-<div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
+<!-- !PAGE CONTENT! -->
+<div class="row" style="max-width:1200px;margin-top:100px">
+
+    <!-- First Photo Grid-->
+    <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/clouds/512/storytelling.png" alt="Book" style="width:100%">
+        <h3>Books</h3>
+        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/bubbles/512/writer-female.png" alt="Author" style="width:100%">
+        <h3>Authors</h3>
+        <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/bubbles/512/search.png" alt="Research" style="width:100%">
+        <h3>Resarch</h3>
+        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+        <p>What else?</p>
+      </div>
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/clouds/512/homework-app.png" alt="Study" style="width:100%">
+        <h3>Study</h3>
+        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
+    
+    <!-- Second Photo Grid-->
+    <div class="w3-row-padding w3-padding-16 w3-center">
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/clouds/512/learning.png" alt="Learn" style="width:100%">
+        <h3>Learn</h3>
+        <p>Lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/bubbles/512/museum.png" alt="Archeology" style="width:100%">
+        <h3>Archeology</h3>
+        <p>Once again, some random text to lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/dusk/512/archeology.png" alt="Artifacts" style="width:100%">
+        <h3>Artifacts</h3>
+        <p>Just some random text, lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
+      <div class="w3-quarter">
+        <img src="https://img.icons8.com/clouds/512/hand-with-pen.png" alt="Papers" style="width:100%">
+        <h3>Papers</h3>
+        <p>Lorem lorem lorem lorem ipsum text praesent tincidunt ipsum lipsum.</p>
+      </div>
     </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
-    </div>
-</div>
+ 
+  <!-- End page content -->
+  </div>
 
 {% endblock %}
