@@ -18,7 +18,7 @@
         <tbody>
             {% for user in user_list %}
             <tr>
-                <td>{{user['_id']}}</a></td>
+                <td> <a href="{{url_for('get_user_by_id', id=user['_id'])}}">{{user['_id']}}</a></td>
                 <td>{{user['name']}}</td>
                 <td>{{user['email']}}</td>
                 <td><div contenteditable> {{user['user_type']}}</div></td>

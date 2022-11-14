@@ -61,3 +61,14 @@ def signout():
 def get_users():
     return render_template('users.html', title='View Users', user_list=User().get_users(), year=datetime.now().year)
     #return User().get_users()
+
+@app.route('/users/<id>', methods=['GET'])
+@login_required
+#@admin_required
+def get_user_by_id(id):
+    return User.get_user(id)
+
+@app.route('/users/edit/', methods=['POST'])
+@login_required
+def post_user_edit():
+    return User().edit_user()

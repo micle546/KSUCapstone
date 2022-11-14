@@ -90,6 +90,29 @@ $("form[name=edit_ticket]").submit(function (e) {
     e.preventDefault();
 });
 
+$("form[name=edit_user]").submit(function (e) {
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "/users/edit/",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            window.location.href = "/users/";
+        },
+        error: function (resp) {
+            $error.text(resp.responseJSON.error).removeClass("error--hidden");
+        }
+    })
+
+    e.preventDefault();
+});
+
+
 $("form[name=create_catalog_item]").submit(function (e) {
     var $form = $(this);
     var $error = $form.find(".error");

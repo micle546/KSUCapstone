@@ -2,7 +2,9 @@ import json
 from urllib import request
 from flask import Flask, jsonify, request, session, render_template, redirect
 from passlib.hash import pbkdf2_sha256
+from datetime import datetime
 from .. import db
+from bson import ObjectId
 
 import uuid
 
@@ -20,7 +22,7 @@ class User:
 
         #create user object
         user = {
-            "_id": uuid.uuid4().hex,
+            #"_id": uuid.uuid4().hex,
             "name": request.form.get('name'),
             "email": request.form.get('email'),
             "user_type": 0,
@@ -65,3 +67,46 @@ class User:
             #print(x)
             x['_id'] = str(x['_id'])
         return db.users.find()
+    def get_user(id):
+        result = db.users.find_one({'_id': id})
+
+        user = {
+            "_id": str(result['_id']),
+            "name": result['name'],
+            "email": result['email'],
+            "user_type": result['user_type'],
+            }
+        return render_template('edit_user.html', title='Edit User', user=user, year=datetime.now().year)
+
+    def edit_user(self):
+        user = {
+            "_id": request.form.get('id'),
+            "name": request.form.get('name'),
+            "email": request.form.get('email'),
+            "user_type": request.form.get('user_type'),
+            }
+
+        #print(user['_id'])
+        x = db.users.find_one({'_id': user['_id']})
+        print('------------')
+        print(x)
+        print('------------')
+        #return jsonify(x), 418
+
+        result = db.users.update_one({'_id': ObjectId(user['_id'])}, {
+            '$set':
+                {
+                    'name':user['name'],
+                    'email':user['email'],
+                    'user_type':user['user_type']
+                    }
+        }
+        )
+        if result.modified_count == 1:
+
+            #print('------------')
+            #print(user)
+            #print('------------')
+            return jsonify(user), 200
+
+        return jsonify({ "error": "Process failed" }), 400
