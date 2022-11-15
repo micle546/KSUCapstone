@@ -6,11 +6,13 @@
 <script type="text/javascript">
     /*This isn't working?p9*/
     cat_type = {{ catalog_item.item_type | tojson }};
-    setType('item_type', type);
-    cat_status = {{ catalog_item.item_status | tojson }};
-    setStatus('item_status', status);
+    setType('item_type', cat_type);
     /*TODO also fix user with this for user type*/
+</script>
 
+<script type="text/javascript">
+    cat_status = {{ catalog_item.item_status | tojson }};
+    setStatus('item_status', cat_status);
 </script>
 
 
@@ -78,7 +80,7 @@
 
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <label for="item_status">item_status</label>
+                            <label for="item_status">Item Status</label>
                             <select id="item_status" name="item_status" class="field">
                                 <option value="1">On Shelf</option>
                                 <option value="2">Checked-Out</option>
