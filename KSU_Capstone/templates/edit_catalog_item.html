@@ -4,17 +4,12 @@
 <div></div>
 
 <script type="text/javascript">
-    /*This isn't working?p9*/
+
     cat_type = {{ catalog_item.item_type | tojson }};
-    setType('item_type', cat_type);
-    /*TODO also fix user with this for user type*/
-</script>
-
-<script type="text/javascript">
     cat_status = {{ catalog_item.item_status | tojson }};
-    setStatus('item_status', cat_status);
-</script>
 
+    /*I think this works now?*/
+</script>
 
 
 <div class="container">
@@ -119,4 +114,7 @@
         </div>
     </div>
 </div>
+
+
+
 {% endblock %}

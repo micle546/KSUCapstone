@@ -1,16 +1,33 @@
-
-
-$(function() {
-    $('#ticket_status').val(status);
+$(function setTicketStatus() {
+    try {
+        $('#ticket_status').val(status);
+    }
+    catch { }
 });
 
-$(function () {
-    $('#item_type').val(cat_type);
+$(function setFieldUserType() {
+    try {
+        $('#user_type').val(use_typ);
+    }
+    catch { }
 });
 
-$(function () {
-    $('#item_status').val(cat_status);
+$(function SetCatType() {
+    try {
+        $('#item_type').val(cat_type);
+    }
+    catch { }
 });
+
+$(function SetCatStatus() {
+    try {
+        $('#item_status').val(cat_status);
+    }
+    catch { }
+});
+
+
+
 
 $("form[name=signup_form]").submit(function (e) {
     var $form = $(this);

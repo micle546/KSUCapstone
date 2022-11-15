@@ -3,7 +3,10 @@
 {% block content %}
 <div></div>
 
-
+<script type="text/javascript">
+    use_typ = {{ user.user_type | tojson }};
+/*    setFieldUserType('user_type', use_typ);*/
+</script>
 
 <div class="container">
     <div class="row">
@@ -38,12 +41,12 @@
                             <input type="text" name="name" class="field" value="{{user['name']}}" readonly required />
                         </div>
                         <div class="col-md-4">
-                            <label for="user_type">user_type</label>
+                            <label for="user_type">User Type</label>
                             <select id="user_type" name="user_type" class="field">
-                                <option value="0">Normal User</option>
-                                <option value="1">Grad Student</option>
-                                <option value="2">Admin</option>
-                                <option value="3">??</option>
+                                <option value="1">Normal User</option>
+                                <option value="2">Grad Student</option>
+                                <option value="3">Admin</option>
+                                <option value="4">??</option>
                             </select>
                         </div>
                     </div>
@@ -62,4 +65,5 @@
         </div>
     </div>
 </div>
+
 {% endblock %}
