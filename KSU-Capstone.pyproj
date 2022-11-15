@@ -79,6 +79,7 @@
     <Content Include="KSU_Capstone\templates\create_ticket.html" />
     <Content Include="KSU_Capstone\templates\create_catalog_item.html" />
     <Content Include="KSU_Capstone\templates\edit_catalog_item.html" />
+    <Content Include="KSU_Capstone\templates\edit_user.html" />
     <Content Include="KSU_Capstone\templates\edit_ticket.html" />
     <Content Include="KSU_Capstone\templates\login.html" />
     <Content Include="KSU_Capstone\templates\catalog.html" />

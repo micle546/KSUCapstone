@@ -13,9 +13,11 @@ class User:
     def start_session(self, user):
         del user['password']
         session['logged_in'] = True
+        user['_id'] = str(user['_id'])
         session['user'] = user
+        
 
-        return jsonify(user), 200
+        return jsonify({ "OK": "Session Created" }), 200
 
 
     def signup(self):
@@ -68,10 +70,12 @@ class User:
             x['_id'] = str(x['_id'])
         return db.users.find()
     def get_user(id):
-        result = db.users.find_one({'_id': id})
+        result = db.users.find_one({'_id': ObjectId(id)})
+
+        print(result)
 
         user = {
-            "_id": str(result['_id']),
+            "_id": result['_id'],
             "name": result['name'],
             "email": result['email'],
             "user_type": result['user_type'],

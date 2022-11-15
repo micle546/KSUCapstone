@@ -10,7 +10,7 @@ class Catalog_Item():
     def fetch_catalog_item(id):
         #print('------mark----')
 
-        result = catalog_db.find_one({'_id': id})
+        result = catalog_db.find_one({'_id': ObjectId(id)})
 
         #print('***********')
         #print(result)
@@ -34,10 +34,10 @@ class Catalog_Item():
         #print(ticket)
         #print('***********')
 
-        return render_template('edit_ticket.html', title='Edit Ticket', catalog_item=catalog_item, year=datetime.now().year)
+        return render_template('edit_catalog_item.html', title='Edit Catalog Item', catalog_item=catalog_item, year=datetime.now().year)
 
     def fetch_catalog():
-        
+        print(catalog_db.find())
         for x in catalog_db.find():
             #print(x)
             x['_id'] = str(x['_id'])
@@ -54,6 +54,7 @@ class Catalog_Item():
             "desc": request.form.get('desc'),
             "isbn": request.form.get('isbn'),
             "item_type": request.form.get('item_type'),
+            "author": request.form.get('author'),
             "modified_user": session['user']['email'],
             "create_time": datetime.now().strftime('%x %X'),
             "modified_time": datetime.now().strftime('%x %X')
@@ -67,9 +68,12 @@ class Catalog_Item():
         
         return jsonify({ "error": "Process failed" }), 400
 
-    def edit_ticket(self):
+    def edit_catalog_item(self):
+        print('****')
+        print(self)
 
         catalog_item = {
+            #this is probably a vulnerability, shouldn't assume form data is valid
             "_id": request.form.get('id'),
             "item_status": request.form.get('item_status'),
             "checkedout_to": request.form.get('checkedout_to'),

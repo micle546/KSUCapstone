@@ -4,6 +4,14 @@ $(function() {
     $('#ticket_status').val(status);
 });
 
+$(function () {
+    $('#item_type').val(cat_type);
+});
+
+$(function () {
+    $('#item_status').val(cat_status);
+});
+
 $("form[name=signup_form]").submit(function (e) {
     var $form = $(this);
     var $error = $form.find(".error");
@@ -154,6 +162,28 @@ $("form[name=isbn_autofill]").submit(function (e) {
             if (resp.redirect) {
                 window.location.href = resp.redirect;
             }
+        },
+        error: function (resp) {
+            $error.text(resp.responseJSON.error).removeClass("error--hidden");
+        }
+    })
+
+    e.preventDefault();
+});
+
+$("form[name=edit_catalog_item]").submit(function (e) {
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "/catalog/edit/",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function (resp) {
+            console.log(resp);
+            window.location.href = "/catalog/";
         },
         error: function (resp) {
             $error.text(resp.responseJSON.error).removeClass("error--hidden");

@@ -1,5 +1,6 @@
 from datetime import datetime
 from gettext import Catalog
+import json
 from flask import Flask, render_template, session, redirect, request, jsonify, url_for
 from functools import wraps
 from .. import app
@@ -38,8 +39,10 @@ def get_catalog_create_isbn(isbn):
 
 
 @app.route('/catalog/create/', methods=['POST'])
+@app.route('/catalog/create/<isbn>', methods=['POST'])
 @login_required
 def post_catalog_create():
+    print(request.form)
     if 'isbn-auto' in request.form:
         print('easyfill')
         print(request.form.get('isbn-auto'))
@@ -49,10 +52,11 @@ def post_catalog_create():
         return redirect('/catalog/create/'+request.form.get('isbn-auto'),303)
         return redirect(url_for('get_catalog_create_isbn',isbn=request.form.get('isbn-auto')))
         #return get_catalog_create_isbn(isbn=request.form['isbn-auto'])
-    elif 'Create Catalog Item' in request.form:
-        print('other')
-        return Catalog_Item.create_catalog_item()
-    else: print(request.form)
+    elif 'isbn' in request.form:
+        return Catalog_Item().create_catalog_item()
+    else:
+         return jsonify({ "error": "Unknown Error" }), 401
+    #else: print(request.form)
 
 @app.route('/catalog/view/', methods=['GET'])
 def get_catalog_list():
@@ -66,4 +70,4 @@ def get_catalog_item_by_id(id):
 @app.route('/catalog/edit/', methods=['POST'])
 @login_required
 def post_catalog_edit():
-    return Catalog_Item().edit_ticket()
+    return Catalog_Item().edit_catalog_item()
