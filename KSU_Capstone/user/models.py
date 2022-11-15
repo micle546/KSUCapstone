@@ -3,7 +3,7 @@ from urllib import request
 from flask import Flask, jsonify, request, session, render_template, redirect
 from passlib.hash import pbkdf2_sha256
 from datetime import datetime
-from .. import db
+from .. import user_db
 from bson import ObjectId
 
 import uuid
@@ -35,11 +35,11 @@ class User:
         user['password'] = pbkdf2_sha256.encrypt(user['password'])
 
         #check for existing user
-        if db.users.find_one({"email": user['email'] }):
+        if user_db.find_one({"email": user['email'] }):
             return jsonify({ "error": "Email address already in use" }), 400
 
         #database
-        if db.users.insert_one(user):
+        if user_db.insert_one(user):
             return self.start_session(user)
         
         return jsonify({ "error": "Signup failed" }), 400
@@ -51,7 +51,7 @@ class User:
 
     def login(self):
 
-        user = db.users.find_one({
+        user = user_db.find_one({
             "email": request.form.get('email')
             })
 
@@ -65,12 +65,12 @@ class User:
         if (session['user']['user_type'] != 0):
             return jsonify({ "error": "Invalid User Type" }), 401
 
-        for x in db.users.find():
+        for x in user_db.find():
             #print(x)
             x['_id'] = str(x['_id'])
-        return db.users.find()
+        return user_db.find()
     def get_user(id):
-        result = db.users.find_one({'_id': ObjectId(id)})
+        result = user_db.find_one({'_id': ObjectId(id)})
 
         print(result)
 
@@ -91,13 +91,13 @@ class User:
             }
 
         #print(user['_id'])
-        x = db.users.find_one({'_id': user['_id']})
+        x = user_db.find_one({'_id': user['_id']})
         print('------------')
         print(x)
         print('------------')
         #return jsonify(x), 418
 
-        result = db.users.update_one({'_id': ObjectId(user['_id'])}, {
+        result = user_db.update_one({'_id': ObjectId(user['_id'])}, {
             '$set':
                 {
                     'name':user['name'],
