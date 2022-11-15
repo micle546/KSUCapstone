@@ -59,8 +59,10 @@ def signout():
 @login_required
 #@admin_required
 def get_users():
-    return render_template('users.html', title='View Users', user_list=User().get_users(), year=datetime.now().year)
+    return render_template('users.html', title='View Users', user_list=User.get_users_list(), year=datetime.now().year)
     #return User().get_users()
+
+
 
 @app.route('/users/<id>', methods=['GET'])
 @login_required

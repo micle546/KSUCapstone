@@ -1,5 +1,4 @@
 from datetime import datetime
-from gettext import Catalog
 import json
 from flask import Flask, render_template, session, redirect, request, jsonify, url_for
 from functools import wraps
