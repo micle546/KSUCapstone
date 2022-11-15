@@ -19,14 +19,14 @@ app.secret_key = environ.get('FLASK_SECRET_KEY', 'dev')
 #client = MongoClient(environ.get('DATABASE_URL', 'localhost'), 27017)
 
 
-db_user = environ.get('DATABASE_USER')
+#db_user = environ.get('DATABASE_USER')
 db_url = environ.get('DATABASE_URL', 'localhost')
 
 
-conn_str = "mongodb+srv://" + db_user + "@"+ db_url
+#conn_str = "mongodb+srv://" + db_user + "@"+ db_url
 
 
-client = MongoClient(conn_str, serverSelectionTimeoutMS=5000)
+client = MongoClient(db_url, serverSelectionTimeoutMS=5000)
 
 
 db = client.db
