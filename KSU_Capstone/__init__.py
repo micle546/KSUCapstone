@@ -18,9 +18,9 @@ app.secret_key = environ.get('FLASK_SECRET_KEY', 'dev')
 
 #client = MongoClient(environ.get('DATABASE_URL', 'localhost'), 27017)
 
-
+local = 'mongodb://localhost:27017/'
 #db_user = environ.get('DATABASE_USER')
-db_url = environ.get('DATABASE_URL', 'localhost')
+db_url = environ.get('DATABASE_URL', local)
 
 
 #conn_str = "mongodb+srv://" + db_user + "@"+ db_url
