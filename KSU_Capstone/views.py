@@ -41,3 +41,4 @@ def about():
         year=datetime.now().year,
         message='Kent State University Archeology Library System'
     )
+

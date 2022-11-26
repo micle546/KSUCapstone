@@ -41,20 +41,16 @@
                     <!--<li><a href="{{ url_for('get_users') }}">(debug) Users</a></li>-->
                     <li><a href="{{ url_for('about') }}">ABOUT</a></li>
                     <li><a href="{{ url_for('contact') }}">CONTACT</a></li>
-                </ul>
-
-                <ul class="nav navbar-nav">
-                <li>
-                    <form action=" /action_page.php" class="navbar-form">
-                        <div class="form-group">
-                        <div class="input-group">
-                        <!--here you connect the data to search-->
-                        <input type="search" placeholder="Search..." name="search" class="form-control">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                        </div>
-                        </div>
-                    </form>
-                </li>
+                
+                    <li>
+                        <form id="search" action="/catalog" class="navbar-form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <!--here you connect the data to search-->
+                                    <textarea name="title" style="width: 140px; height: 30px; resize: none;"></textarea>                             
+                        </form>
+                        <button type="submit" form="search">Search</button>
+                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">

@@ -21,16 +21,54 @@
 </div>
 
 <div> <br></br> </div>
+<h2>Advanced Search:</h2>
+
+<form formname="cat_search_form">
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="isbn">ISBN</label>
+            <input type="text" name="isbn" value="" class="field" />
+            <label for="title">Title</label>
+            <input type="text" name="title" value="" class="field" />
+            <label for="author">Author</label>
+            <input type="text" name="author" class="field" />
+        </div>
+        <div class="col-md-4">
+            <label for="item_type">Item Type</label>
+            <select id="item_type" name="item_type" class="field">
+                <option value="1">Book</option>
+                <option value="2">?</option>
+                <option value="3">??</option>
+                <option value="4">???</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="item_status">item_status</label>
+            <select id="item_status" name="item_status" class="field">
+                <option value="1">On Shelf</option>
+                <option value="2">Checked-Out</option>
+                <option value="3">??</option>
+                <option value="4">???</option>
+            </select>
+        </div>
+
+    </div>
+
+    <p class="error error--hidden"></p>
+
+    <input type="submit" id="submit" name="action" value="Search" class="btn" />
+</form>
+<div><br></div>
 
 <div class="table-responsive">
     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <table class="table sortable table-striped table-bordered">
         <thead class="">
             <tr style="">
-                <th class="align-middle" style="text-align:center">ID</th>
+                <!--<th class="align-middle" style="text-align:center">ID</th>-->
+                <th class="align-middle" style="text-align:center">Title</th>
                 <th class="align-middle" style="text-align:center">Status</th>
-                <th class="align-middle" style="text-align:center">checkedout to</th>
-                <th class="align-middle" style="text-align:center">title</th>
+                <th class="align-middle" style="text-align:center">checkedout to:</th>
                 <th class="align-middle" style="text-align:center">desc</th>
                 <th class="align-middle" style="text-align:center">isbn</th>
                 <th class="align-middle" style="text-align:center">item_type</th>
@@ -40,10 +78,10 @@
         <tbody>
             {% for catalog_item in catalog %}
             <tr class = "item">
-                <td> <a href="{{url_for('get_catalog_item_by_id', id=catalog_item['_id'])}}">{{catalog_item['_id']}}</a></td>
+                <!--<td> <a href="{{url_for('get_catalog_item_by_id', id=catalog_item['_id'])}}">{{catalog_item['_id']}}</a></td>-->
+                <td>{{catalog_item['title']}}</td>
                 <td>{{catalog_item['item_status']}}</td>
                 <td>{{catalog_item['checkedout_to']}}</td>
-                <td>{{catalog_item['title']}}</td>
                 <td>{{catalog_item['desc']}}</td>
                 <td>{{catalog_item['isbn']}}</td>
                 <td>{{catalog_item['item_type']}}</td>

@@ -209,3 +209,24 @@ $("form[name=edit_catalog_item]").submit(function (e) {
 
     e.preventDefault();
 });
+
+$("form[name=cat_search_form]").submit(function (e) {
+    var $form = $(this);
+    var $error = $form.find(".error");
+    var data = $form.serialize();
+
+    $.ajax({
+        url: "/catalog/",
+        type: "POST",
+        data: data,
+        dataType: "json",
+        success: function (resp) {
+            window.location.href = "/";
+        },
+        error: function (resp) {
+            $error.text(resp.responseJSON.error).removeClass("error--hidden");
+        }
+    })
+
+    e.preventDefault();
+});
