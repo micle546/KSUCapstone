@@ -17,6 +17,35 @@ def login_required(f):
             return redirect('/user/login')
     return wrap
 
+def elevateduser_required(f): #
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'user_type' in session['user']:
+            if session['user']['user_type'] == '2' or session['user']['user_type'] == '3':
+                return f(*args, **kwargs)
+            else:
+                print (session['user']['user_type'])
+                return jsonify({ "error": "Invalid User Type" }), 401
+        else:
+            print (session['user']['user_type'])
+            return jsonify({ "error": "Session error, please relogin, if issue persists contact admin" }), 401
+    return wrap
+
+
+def admin_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'user_type' in session['user']:
+            if session['user']['user_type'] == '3':
+                return f(*args, **kwargs)
+            else:
+                print (session['user']['user_type'])
+                return jsonify({ "error": "Invalid User Type" }), 401
+        else:
+            print (session['user']['user_type'])
+            return jsonify({ "error": "Session error, please relogin, if issue persists contact admin" }), 401
+    return wrap
+
 
 #routes
 @app.route('/catalog/', methods=['GET'])
@@ -25,11 +54,13 @@ def get_catalog():
 
 @app.route('/catalog/create/', methods=['GET'])
 @login_required
+@elevateduser_required
 def get_catalog_create():
     return render_template('create_catalog_item.html', title='Create Catalog Item', year=datetime.now().year, time_now=datetime.now().strftime('%x %X'))
 
 @app.route('/catalog/create/<isbn>', methods=['GET'])
 @login_required
+@elevateduser_required
 def get_catalog_create_isbn(isbn):
     #catalog_item = get_book_data(isbn)
     #print(catalog_item)
@@ -40,6 +71,7 @@ def get_catalog_create_isbn(isbn):
 @app.route('/catalog/create/', methods=['POST'])
 @app.route('/catalog/create/<isbn>', methods=['POST'])
 @login_required
+@elevateduser_required
 def post_catalog_create():
     print(request.form)
     if 'isbn-auto' in request.form:
@@ -68,5 +100,6 @@ def get_catalog_item_by_id(id):
 
 @app.route('/catalog/edit/', methods=['POST'])
 @login_required
+@elevateduser_required
 def post_catalog_edit():
     return Catalog_Item().edit_catalog_item()
