@@ -2,6 +2,15 @@
 
 Kent State Capstone Repo
 https://dev.kentcapstone.ai-home.co/
+
+# Setting up Local Database
+1. download this: https://www.mongodb.com/try/download/community
+2. install (clickthrough, no setting changes) (complete, and as a service)
+3. type: services.msc into your start menu, seach for mongoDB and verify it is running (you can stop and disable it when you're not local debugging, just make sure to start it back up when coding)
+
+![image](https://user-images.githubusercontent.com/1088521/203186558-0c67160b-86ec-4621-b794-ddafd4c867a4.png)
+
+
 # Setting up Visual Studio
 - Open Visual Studio
 - Select clone a repo
