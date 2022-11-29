@@ -32,6 +32,7 @@
                 <th class="align-middle" style="text-align:center">checkedout to</th>
                 <th class="align-middle" style="text-align:center">title</th>
                 <th class="align-middle" style="text-align:center">desc</th>
+                <th class="align-middle" style="text-align:center">Author</th>
                 <th class="align-middle" style="text-align:center">isbn</th>
                 <th class="align-middle" style="text-align:center">item_type</th>
                 <!--<th>Description</th>-->
@@ -39,12 +40,13 @@
         </thead>
         <tbody>
             {% for catalog_item in catalog %}
-            <tr class = "item">
+            <tr class="item">
                 <td> <a href="{{url_for('get_catalog_item_by_id', id=catalog_item['_id'])}}">{{catalog_item['_id']}}</a></td>
                 <td>{{catalog_item['item_status']}}</td>
                 <td>{{catalog_item['checkedout_to']}}</td>
                 <td>{{catalog_item['title']}}</td>
                 <td>{{catalog_item['desc']}}</td>
+                <td>{{catalog_item['author']}}</td>
                 <td>{{catalog_item['isbn']}}</td>
                 <td>{{catalog_item['item_type']}}</td>
                 <!--<td style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{catalog_item['desc']}}</td>-->
