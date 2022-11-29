@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+from re import search
 from unittest import result
 from urllib import request
 from flask import Flask, jsonify, request, session, render_template, redirect
@@ -115,5 +116,10 @@ class Catalog_Item():
             return jsonify(catalog_item), 200
 
         return jsonify({ "error": "Process failed" }), 400
-
+    def searchCatalog(searchText):
+        #results = catalog_db.find({'*' : searchText} )
+        results = catalog_db.find({ '$text': { '$search': searchText } })
+        print(results)
+        #return jsonify({ "Search": list(results) }), 400
+        return results
 

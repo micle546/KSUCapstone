@@ -1,5 +1,7 @@
 from datetime import datetime
+from gettext import Catalog
 import json
+from re import search
 from flask import Flask, render_template, session, redirect, request, jsonify, url_for
 from functools import wraps
 from .. import app
@@ -103,3 +105,9 @@ def get_catalog_item_by_id(id):
 @elevateduser_required
 def post_catalog_edit():
     return Catalog_Item().edit_catalog_item()
+
+@app.route('/catalog/search')
+def catalog_search():
+    searchTerm = request.args.get('q')
+    #return Catalog_Item.searchCatalog(searchTerm)
+    return render_template('catalog.html', title='Search Catalog', catalog=Catalog_Item.searchCatalog(searchTerm), year=datetime.now().year)
