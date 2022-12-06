@@ -6,9 +6,6 @@
     # Capstone Group Members: Abdullah Almutlaq, Antonio S-M, Mitchell Stemm, Christabel Akhigbe, Mike Eubank
 
 ###############################################################################################################
-
-from asyncio.windows_events import NULL
-from contextlib import nullcontext
 import requests
 import json
 
