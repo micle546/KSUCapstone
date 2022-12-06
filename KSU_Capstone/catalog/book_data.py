@@ -7,6 +7,8 @@
 
 ###############################################################################################################
 
+from asyncio.windows_events import NULL
+from contextlib import nullcontext
 import requests
 import json
 
@@ -95,6 +97,24 @@ def get_book_data(isbn):
         authors = [{"key": 'no author available'}]
     ##############################################
 
+    ## author stringify ##
+    author_str = ""
+
+    
+    if len(authors) > 1:
+        try:
+            author_str = authors[0]['key']
+            for i in range(1, len(authors)):
+                if authors[i]['key'] != None:
+                    author_str += ', ' + authors[i]['key']
+        except:
+            author_str = ""
+    else:
+        author_str = authors[0]['key']
+
+    #####
+
+
     ############## get description ###############
     try:
         try:
@@ -126,4 +146,4 @@ def get_book_data(isbn):
     ##############################################
 
     # Returning dictionary that contains all useful book data
-    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "authors":authors, "language":language, "publish_date":publish_date, "description":descriptions}
+    return {"title":title, "cover":cover, "isbn":isbn, "item_type":1, "author":author_str, "language":language, "publish_date":publish_date, "description":descriptions}

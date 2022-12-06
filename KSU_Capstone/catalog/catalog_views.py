@@ -64,10 +64,10 @@ def get_catalog_create():
 @login_required
 @elevateduser_required
 def get_catalog_create_isbn(isbn):
-    #catalog_item = get_book_data(isbn)
-    #print(catalog_item)
+    catalog_item_get = get_book_data(isbn)
+    print(catalog_item_get)
     print('test_hit')
-    return render_template('create_catalog_item_quickfill.html', catalog_item=get_book_data(isbn), title='Create Catalog Item', year=datetime.now().year, time_now=datetime.now().strftime('%x %X'))
+    return render_template('create_catalog_item_quickfill.html', catalog_item=catalog_item_get, title='Create Catalog Item', year=datetime.now().year, time_now=datetime.now().strftime('%x %X'))
 
 
 @app.route('/catalog/create/', methods=['POST'])
