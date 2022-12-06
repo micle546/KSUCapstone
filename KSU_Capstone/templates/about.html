@@ -1,14 +1,65 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<head>
+    <style> 
+        .about {
+            width: 100%;
+            padding: 78px 0px;
+        }
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
+        .about img {
+            height: auto;
+            width: 420px;
+        }
 
-<p>
+        .about-text{
+            width:550px;
+        }
+
+        .main{
+            width:1130px;
+            max-width: 95%;
+            margin:0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .about-text h1 {
+            color: black;
+            font-size: 80px;
+            text-transform: capitalize;
+            margin-bottom: 20px;
+        }
+
+        .about-text h5{
+            color: black;
+            font-size: 25px;
+            text-transform: capitalize;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+        }
+    </style>
+</head>
+
+<body>
+<section class ="about">
+<div class="main">
+    <img src ="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/512/external-info-communication-media-flaticons-lineal-color-flat-icons.png">
+<div class="about-text">
+    <h1> About </h1>
+    <h5> ArchLib </h5>
+    <p style="font-family:'Courier New'">
     This System was created by a Capstone group including (Abdullah Almutlaq, Antonio S-M, Mitchell Stemm, Christabel Akhigbe, Mike Eubank).
     The system is created to house the Archeology Library information regarding books and other items.
     This system can be used to add and remove books from the database, search for a specific book or an item, it is also used to keep track of the books and items in the database.
 </p>
+   
+</div>
+</div>
+</section>
+</body>
 
 {% endblock %}

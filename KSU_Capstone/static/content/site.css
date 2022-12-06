@@ -285,3 +285,18 @@ Custom CSS
     font-size: 12px;
     color: white;
 }
+
+.catalogtab {
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--white);
+    outline: none;
+    background: var(--primary);
+    transition: color .15s ease, background-color .15s ease;
+}
+.catalogtab:hover {
+    background: var(--primary-dark);font-size: 14px;
+}
